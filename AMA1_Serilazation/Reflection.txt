@@ -1,0 +1,34 @@
+﻿Reflection sayesinde;
+
+Nesne hakkında çalışma zamanında bilgi alabiliriz (runtime'da).
+
+Dinamik olarak nesneler oluşturabiliriz.
+
+Bir sınıfın metodlarını veya özelliklerini çalıştırabilir veya değiştirebiliriz.
+
+Özellikle plugin sistemleri, test framework’leri ve veri tabanı ORM’leri gibi yapılar Reflection kullanır.
+
+using System;
+using System.Reflection;
+
+class Ogrenci
+{
+    public string Ad { get; set; }
+    public int Yas { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Type tip = typeof(Ogrenci);
+
+        Console.WriteLine("Sınıf Adı: " + tip.Name);
+
+        Console.WriteLine("Özellikler:");
+        foreach (PropertyInfo ozellik in tip.GetProperties())
+        {
+            Console.WriteLine("- " + ozellik.Name);
+        }
+    }
+}
